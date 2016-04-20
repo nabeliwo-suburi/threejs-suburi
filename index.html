@@ -5,15 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="assets/css/codegrid-ui.min.css">
     <title>three.jsテスト</title>
 </head>
 <body>
+
+<header class="CG2-pageHeader"><div class="CG2-pageHeader__inner"><div class="CG2-pageHeader__logo"><a href="/"><img src="" alt="CodeGrid" width="125" height="24"></a></div><div class="CG2-pageHeader__nav"><ul><li><a href="payment.html">料金</a></li><li><a href="organization.html">団体購読</a></li><li><a href="faq.html">よくある質問</a></li><li><a href="publication.html">書籍</a></li></ul></div><div class="CG2-pageHeader__buttons"><ul><li><a href="https://app.codegrid.net/payment/" class="CG2-button CG2-button--primary CG2-button--thin">購読する</a></li><li><a href="https://app.codegrid.net/signin/">ログイン</a></li></ul></div><div data-drawer-toggle="" class="CG2-pageHeader__opener"></div></div></header>
+
+<div class="CG2-drawer"><div class="CG2-drawer__panel"><div class="CG2-drawer__panelViewport"><div class="CG2-drawer__panelBody"><div class="CG2-drawerBody"><div class="CG2-drawerBody__nav"><ul><li><a href="https://app.codegrid.net/">アプリトップ</a></li></ul></div><div class="CG2-drawerBody__userNav"><ul><li><a href="https://app.codegrid.net/payment/" class="CG2-button CG2-button--primary CG2-button--fullWidth">購読する</a></li><li><a href="https://app.codegrid.net/signin/" class="CG2-button CG2-button--fullWidtha">ログイン</a></li></ul></div><div class="CG2-drawerBody__separator"></div><div class="CG2-drawerBody__nav"><ul><li><a href="/">CodeGridについて</a></li><li><a href="/payment.html">料金</a></li><li><a href="/organization.html">団体購読</a></li><li><a href="/faq.html">よくある質問</a></li><li><a href="/publication.html">書籍</a></li><li class="CG2-drawerBody__navItem--icon"><a href="https://twitter.com/codegrid"><span class="CG2-icon-twitter"></span>公式Twitter</a></li></ul></div><div class="CG2-drawerBody__separator"></div><div class="CG2-drawerBody__nav"><ul><li class="CG2-drawerBody__navItem--plane"><a href="/contact.html">お問い合わせ</a></li><li class="CG2-drawerBody__navItem--plane"><a href="/terms.html">利用規約</a></li><li class="CG2-drawerBody__navItem--plane"><a href="/privacy.html">プライバシーポリシー</a></li><li class="CG2-drawerBody__navItem--plane"><a href="/tokutei.html">特定商法に基づく表示</a></li></ul></div></div></div></div><div data-drawer-hide="" class="CG2-drawer__panelLeft"></div></div><div data-drawer-close="" class="CG2-drawer__bg"></div></div>
+
+<div class="CG2-logo3d"><div class="CG2-logo3d__inner" style="width: 1045px; height: 865px;"><div class="CG2-logo3d__overlayText">フロントエンドに<br class="CG2--disableLargeScreen CG2--disableMiddleScreen">関わる人々のガイド</div></div></div>
 
 <!-- <canvas id="glcanvas" width="500" height="500"></canvas> -->
 
 <!-- <script src="assets/js/app/webgl_org.js"></script> -->
 <script src="assets/js/libs/three.min.js"></script>
 <!-- <script src="assets/js/app/three_basic.js"></script> -->
-<script src="assets/js/app/three_update.js"></script>
+<!-- <script src="assets/js/app/three_update.js"></script> -->
+<script src="assets/js/app/makePNoise1D.js"></script>
+<script src="assets/js/app/Logo3D.js"></script>
+<script>var logo3d = new CG2.Logo3D( document.querySelector( '.CG2-logo3d__inner' ) );</script>
 </body>
 </html>
