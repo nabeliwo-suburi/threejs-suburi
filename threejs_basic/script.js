@@ -25,8 +25,6 @@ window.addEventListener('DOMContentLoaded', function() {
   var cubeMesh = new THREE.Mesh(geometry, material);
   scene.add(cubeMesh);
 
-  // renderer.render(scene, camera);
-
   function rendering() {
     cubeMesh.rotation.x += 0.01;
     cubeMesh.rotation.y += 0.01;
