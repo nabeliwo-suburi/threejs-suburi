@@ -12,19 +12,17 @@ function canvasApp() {
   }
 
   var context = theCanvas.getContext('2d');
-  var speed = 4;
-  var gravity = .1;
-  var angle = 305;
-  var radians = angle * Math.PI / 180;
-  var radius = 15;
-  var vx = Math.cos(radians) * speed;
-  var vy = Math.sin(radians) * speed;
-  var p1 = { x: 20, y: theCanvas.height - radius };
+  var radius = 10;
+  var easeValue = .05;
+  var p1 = { x: 250, y: -20 };
+  var p2 = { x: 250, y: 490 };
   var ball = {
     x: p1.x,
     y: p1.y,
-    velocityx: vx,
-    velocityy: vy,
+    endx: p2.x,
+    endy: p2.y,
+    velocityx: 0,
+    velocityy: 0,
     radius: radius
   };
 
@@ -36,16 +34,14 @@ function canvasApp() {
     context.strokeStyle = '#000';
     context.strokeRect(1, 1, theCanvas.width - 2, theCanvas.height - 2);
 
-    if (ball.y + ball.radius <= theCanvas.height) {
-      ball.velocityy += gravity;
-    } else {
-      ball.velocityx = 0;
-      ball.velocityy = 0;
-      ball.y = theCanvas.height - ball.radius;
-    }
+    var dx = ball.endx - ball.x;
+    var dy = ball.endy - ball.y;
 
-    ball.y += ball.velocityy;
+    ball.velocityx = dx * easeValue;
+    ball.velocityy = dy * easeValue;
+
     ball.x += ball.velocityx;
+    ball.y += ball.velocityy;
 
     context.fillStyle = '#000';
     context.beginPath();

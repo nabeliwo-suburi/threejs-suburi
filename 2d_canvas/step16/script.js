@@ -12,9 +12,11 @@ function canvasApp() {
   }
 
   var context = theCanvas.getContext('2d');
-  var speed = 4;
+  var speed = 6;
   var gravity = .1;
-  var angle = 305;
+  var friction = .03;
+  var elasticity = .5;
+  var angle = 285;
   var radians = angle * Math.PI / 180;
   var radius = 15;
   var vx = Math.cos(radians) * speed;
@@ -25,7 +27,8 @@ function canvasApp() {
     y: p1.y,
     velocityx: vx,
     velocityy: vy,
-    radius: radius
+    radius: radius,
+    elasticity: elasticity
   };
 
   function drawScreen() {
@@ -36,12 +39,14 @@ function canvasApp() {
     context.strokeStyle = '#000';
     context.strokeRect(1, 1, theCanvas.width - 2, theCanvas.height - 2);
 
-    if (ball.y + ball.radius <= theCanvas.height) {
-      ball.velocityy += gravity;
-    } else {
-      ball.velocityx = 0;
-      ball.velocityy = 0;
-      ball.y = theCanvas.height - ball.radius;
+    ball.velocityy += gravity;
+
+    if ((ball.y + ball.radius) > theCanvas.height) {
+      ball.velocityy = -(ball.velocityy) * ball.elasticity;
+    }
+
+    if ((ball.y + ball.radius) >= theCanvas.height) {
+      ball.velocityx = ball.velocityx - (ball.velocityx * friction);
     }
 
     ball.y += ball.velocityy;

@@ -14,7 +14,7 @@ function canvasApp() {
   var context = theCanvas.getContext('2d');
   var speed = 4;
   var gravity = .1;
-  var angle = 305;
+  var angle = 295;
   var radians = angle * Math.PI / 180;
   var radius = 15;
   var vx = Math.cos(radians) * speed;
@@ -36,12 +36,10 @@ function canvasApp() {
     context.strokeStyle = '#000';
     context.strokeRect(1, 1, theCanvas.width - 2, theCanvas.height - 2);
 
-    if (ball.y + ball.radius <= theCanvas.height) {
-      ball.velocityy += gravity;
-    } else {
-      ball.velocityx = 0;
-      ball.velocityy = 0;
-      ball.y = theCanvas.height - ball.radius;
+    ball.velocityy += gravity;
+
+    if ((ball.y + ball.radius) > theCanvas.height) {
+      ball.velocityy = -(ball.velocityy);
     }
 
     ball.y += ball.velocityy;
