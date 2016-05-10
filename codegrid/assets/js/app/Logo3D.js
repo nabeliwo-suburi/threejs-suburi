@@ -8,7 +8,7 @@ CG2.Logo3D = (function() {
   var isSmallScreen = function() {
     return window.matchMedia('(max-width: ' + BREAK_POINT + 'px)').matches;
   };
-  // Page Visibility APIを使う(タブを変えたときなど)
+  // Page Visibility APIを使う(タブを変えたときなど)。ウィンドウが隠れている状態かどうか
   var isWindowHidden = function() {
     if (typeof (document.hidden || document.msHidden || document.webkitHidden) === 'undefined') {
       // もしAPIがサポートされていなければ、いつでもfalseを返す
@@ -17,7 +17,7 @@ CG2.Logo3D = (function() {
 
     return document.hidden || document.msHidden || document.webkitHidden;
   };
-  // windowのfocus状態を取得する。windowのイベントでisUnfocusを変更している
+  // windowのfocus状態を取得する。windowのイベントでisUnfocusを変更している。windowのfocus,flurはタブ変えたりとか
   var isWindowUnfocused = (function() {
     var isUnfocused = false;
 
@@ -42,7 +42,7 @@ CG2.Logo3D = (function() {
 
     this.containerElement = containerElement;
     this.scene = new THREE.Scene();
-    this.scene.fog = new THREE.Fog(0x000000, 600, 1000);
+    this.scene.fog = new THREE.Fog(0x000000, 600, 1000); // 遠くにいくほど物体が白く霞んでいく処理
     this.camera = new THREE.PerspectiveCamera(60, this.width / this.height, 1, 10000);
     this.camera.position.set(0, 0, 600);
     this.renderer = new THREE.WebGLRenderer();
@@ -56,6 +56,49 @@ CG2.Logo3D = (function() {
     var grid = new THREE.Points(Logo3D.gridGeometry, Logo3D.gridMaterial);
     this.scene.add(grid);
   };
+
+  ///////////////////////////////
+  // gridMaterial
+  ///////////////////////////////
+  Logo3D.gridMaterial = new THREE.ShaderMaterial({
+    vertexShader: [
+      'attribute float rand;',
+      'uniform float size;',
+      'uniform float scale;',
+      'uniform float time;',
+
+      'void main() {',
+        'float z = sin(rand * 3.1414 + time * 3.0) * scale * 0.5;',
+        'vec4 mvPosition = modelViewMatrix * vec4(position.xy, z, 1.0);',
+        'gl_PointSize = size * (scale / length(mvPosition.xyz));',
+        'gl_Position = projectionMatrix * mvPosition;',
+      '}'
+    ].join('\n'),
+
+    fragmentShader: [
+      'uniform vec3 psColor;',
+      THREE.ShaderChunk['fog_pars_fragment'],
+
+      'void main() {',
+        'vec3 outgoingLight = vec3(0.0);',
+        'vec4 diffuseColor = vec4(psColor, 1.0);',
+        'outgoingLight = diffuseColor.rgb;',
+        THREE.shaderChunk['fog_fragment'],
+        'gl_FragColor = vec4(outgoingLight, 1.0);',
+      '}'
+    ].join('\n'),
+
+    uniforms: THREE.UniformsUtils.merge([
+      THREE.UniformsLib['points'],
+      {
+        time: { type: 'f', value: 0 },
+        intensity: { type: 'f', value: 0 }
+      }
+    ]),
+
+    defines: {},
+    fog: true
+  });
 
   ///////////////////////////////
   // grid geometry
@@ -79,8 +122,10 @@ CG2.Logo3D = (function() {
       rand.push(Math.random());
     }
 
-    console.log(position);
-    console.log(rand);
+    vertexBuffer = new THREE.BufferAttribute(new Float32Array(position), 3);
+    randBuffer = new THREE.BufferAttribute(new Float32Array(rand), 1);
+    gridGeometry.addAttribute('position', vertexBuffer);
+    gridGeometry.addAttribute('rand', randBuffer);
 
     return gridGeometry;
   })();

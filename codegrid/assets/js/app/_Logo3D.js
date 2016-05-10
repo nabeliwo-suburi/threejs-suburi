@@ -400,31 +400,31 @@
 ///////////////////////////////
   // Logo3D.gridGeometry = ( function () {
 
-    var GRID_WIDTH   = 160;
-    var GRID_HEIGHT  = 60;
-    var GRID_STEP    = 10;
-    var GRID_STEP_HALF = GRID_STEP * 0.5;
-    var i, l, posV, posH;
-    var gridGeometry = new THREE.BufferGeometry();
-    var position     = [];
-    var rand         = [];
-    var vertexBuffer, randBuffer;
+    // var GRID_WIDTH   = 160;
+    // var GRID_HEIGHT  = 60;
+    // var GRID_STEP    = 10;
+    // var GRID_STEP_HALF = GRID_STEP * 0.5;
+    // var i, l, posV, posH;
+    // var gridGeometry = new THREE.BufferGeometry();
+    // var position     = [];
+    // var rand         = [];
+    // var vertexBuffer, randBuffer;
 
-    for ( i = 0, l = GRID_WIDTH * GRID_HEIGHT; i < l; i ++ ) {
+    // for ( i = 0, l = GRID_WIDTH * GRID_HEIGHT; i < l; i ++ ) {
+    //
+    //   posV = ( ( i / GRID_HEIGHT )|0 ) * GRID_STEP - GRID_WIDTH  * GRID_STEP_HALF;
+    //   // posV = ( ( i / GRID_HEIGHT )|0 ) * GRID_STEP - GRID_WIDTH  * GRID_STEP_HALF + GRID_STEP_HALF;
+    //   // posH = i % GRID_HEIGHT           * GRID_STEP - GRID_HEIGHT * GRID_STEP_HALF;
+    //   posH = i % GRID_HEIGHT           * GRID_STEP - GRID_HEIGHT * GRID_STEP_HALF + GRID_STEP_HALF;
+    //   position.push( posV, posH , 0 );
+    //   rand.push( Math.random() );
+    //
+    // }
 
-      posV = ( ( i / GRID_HEIGHT )|0 ) * GRID_STEP - GRID_WIDTH  * GRID_STEP_HALF;
-      // posV = ( ( i / GRID_HEIGHT )|0 ) * GRID_STEP - GRID_WIDTH  * GRID_STEP_HALF + GRID_STEP_HALF;
-      // posH = i % GRID_HEIGHT           * GRID_STEP - GRID_HEIGHT * GRID_STEP_HALF;
-      posH = i % GRID_HEIGHT           * GRID_STEP - GRID_HEIGHT * GRID_STEP_HALF + GRID_STEP_HALF;
-      position.push( posV, posH , 0 );
-      rand.push( Math.random() );
-
-    }
-
-    vertexBuffer = new THREE.BufferAttribute( new Float32Array( position ), 3 );
-    randBuffer   = new THREE.BufferAttribute( new Float32Array( rand ),     1 );
-    gridGeometry.addAttribute( 'position', vertexBuffer );
-    gridGeometry.addAttribute( 'rand',     randBuffer );
+    // vertexBuffer = new THREE.BufferAttribute( new Float32Array( position ), 3 );
+    // randBuffer   = new THREE.BufferAttribute( new Float32Array( rand ),     1 );
+    // gridGeometry.addAttribute( 'position', vertexBuffer );
+    // gridGeometry.addAttribute( 'rand',     randBuffer );
 
     // return gridGeometry;
 
