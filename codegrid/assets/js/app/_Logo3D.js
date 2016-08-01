@@ -344,51 +344,51 @@
 ///////////////////////////////
 // gridMaterial
 ///////////////////////////////
-  Logo3D.gridMaterial = new THREE.ShaderMaterial( {
+  // Logo3D.gridMaterial = new THREE.ShaderMaterial( {
 
-    vertexShader : [
-      'attribute float rand;',
-      'uniform float size;',
-      'uniform float scale;',
-      'uniform float time;',
+    // vertexShader : [
+    //   'attribute float rand;',
+    //   'uniform float size;',
+    //   'uniform float scale;',
+    //   'uniform float time;',
+    //
+    //   'void main() {',
+    //
+    //     'float z = sin( rand * 3.1415 + time * 3.0 ) * scale * 0.5;',
+    //     'vec4 mvPosition = modelViewMatrix * vec4( position.xy, z, 1.0 );',
+    //     'gl_PointSize = size * ( scale / length( mvPosition.xyz ) );',
+    //     'gl_Position = projectionMatrix * mvPosition;',
+    //
+    //   '}'
+    // ].join( '\n' ),
 
-      'void main() {',
+    // fragmentShader: [
+    //   'uniform vec3 psColor;',
+    //   THREE.ShaderChunk[ 'fog_pars_fragment' ],
+    //
+    //   'void main() {',
+    //
+    //     'vec3 outgoingLight = vec3( 0.0 );',
+    //     'vec4 diffuseColor = vec4( psColor, 1.0 );',
+    //     'outgoingLight = diffuseColor.rgb;',
+    //     THREE.ShaderChunk[ 'fog_fragment' ],
+    //     'gl_FragColor = vec4( outgoingLight, 1.0 );',
+    //
+    //   '}'
+    // ].join('\n'),
 
-        'float z = sin( rand * 3.1415 + time * 3.0 ) * scale * 0.5;',
-        'vec4 mvPosition = modelViewMatrix * vec4( position.xy, z, 1.0 );',
-        'gl_PointSize = size * ( scale / length( mvPosition.xyz ) );',
-        'gl_Position = projectionMatrix * mvPosition;',
+    // uniforms: THREE.UniformsUtils.merge( [
+    //   THREE.UniformsLib[ 'points' ],
+    //   {
+    //     time: { type: 'f', value: 0 },
+    //     intensity: { type: 'f', value: 0 }
+    //   }
+    // ] ),
+    //
+    // defines: {},
+    // fog: true,
 
-      '}'
-    ].join( '\n' ),
-
-    fragmentShader: [
-      'uniform vec3 psColor;',
-      THREE.ShaderChunk[ 'fog_pars_fragment' ],
-
-      'void main() {',
-
-        'vec3 outgoingLight = vec3( 0.0 );',
-        'vec4 diffuseColor = vec4( psColor, 1.0 );',
-        'outgoingLight = diffuseColor.rgb;',
-        THREE.ShaderChunk[ 'fog_fragment' ],
-        'gl_FragColor = vec4( outgoingLight, 1.0 );',
-
-      '}'
-    ].join('\n'),
-
-    uniforms: THREE.UniformsUtils.merge( [
-      THREE.UniformsLib[ 'points' ],
-      {
-        time: { type: 'f', value: 0 },
-        intensity: { type: 'f', value: 0 }
-      }
-    ] ),
-
-    defines: {},
-    fog: true,
-
-  } );
+  // } );
 
   Logo3D.gridMaterial.uniforms.size.value = 100;
   Logo3D.gridMaterial.uniforms.scale.value = 0.8 * 10;
