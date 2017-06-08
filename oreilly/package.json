@@ -1,0 +1,25 @@
+{
+  "name": "oreilly",
+  "version": "1.0.0",
+  "description": "three.js勉強用のリポジトリです。",
+  "main": "index.js",
+  "scripts": {
+    "bundle": "webpack",
+    "watch": "webpack -w",
+    "serve": "http-server ./src",
+    "dev": "npm-run-all -p serve watch"
+  },
+  "author": "nabeliwo",
+  "license": "ISC",
+  "dependencies": {
+    "three": "^0.85.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "http-server": "^0.10.0",
+    "npm-run-all": "^4.0.2",
+    "webpack": "^2.6.1"
+  }
+}
