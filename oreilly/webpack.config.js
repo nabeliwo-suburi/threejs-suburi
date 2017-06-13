@@ -1,7 +1,11 @@
 const path = require('path');
 
 const entries = {
-  chapter01: './src/js/chapter01.js'
+  chapter01: './src/js/chapter01.js',
+  chapter02: './src/js/chapter02.js',
+  chapter02_04: './src/js/chapter02_04.js',
+  chapter02_05: './src/js/chapter02_05.js',
+  chapter03: './src/js/chapter03.js'
 };
 
 module.exports = {
