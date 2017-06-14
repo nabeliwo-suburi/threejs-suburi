@@ -5,7 +5,8 @@ const entries = {
   chapter02: './src/js/chapter02.js',
   chapter02_04: './src/js/chapter02_04.js',
   chapter02_05: './src/js/chapter02_05.js',
-  chapter03: './src/js/chapter03.js'
+  chapter03: './src/js/chapter03.js',
+  chapter03_05: './src/js/chapter03_05.js'
 };
 
 module.exports = {
